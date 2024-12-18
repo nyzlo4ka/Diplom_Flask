@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты поиска</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #555;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2, h3 {
+            color: #2c3e50; /* Объединение стилей для заголовков */
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        strong {
+            color: #2980b9;
+        }
+        form {
+            margin: 20px 0;
+            text-align: center;
+        }
+        input[type="text"], button {
+            padding: 10px;
+            border-radius: 5px;
+        }
+        input[type="text"] {
+            width: 300px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3498db;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Результаты поиска</h1>
+    {% if books %}
+        <ul>
+            {% for book in books %}
+                <li>
+                    <a href="/books/{{ book.id }}"> {{ book.title }} - {{ book.author }} (ID:{{ book.id }})</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Книги не найдены.</p>
+    {% endif %}
+
+    <form action="/books/search" method="get">
+        <input type="text" name="query" placeholder="Введите запрос для поиска" required>
+        <button type="submit">Поиск</button>
+    </form>
+    <a href="/">Вернуться на главную страницу</a>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить книгу</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin: 20px auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column; /* Устанавливаем вертикальное расположение элементов */
+            align-items: center; /* Центрируем элементы по горизонтали */
+        }
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px; /* Отступ между полями */
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3498db;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var message = "{{ success_message }}";
+            if (message) {
+                alert(message);
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Добавить книгу</h1>
+    <form action="/books/add" method="POST">
+        <input type="text" name="author" placeholder="Автор" required>
+        <input type="text" name="title" placeholder="Название" required>
+        <input type="text" name="genre" placeholder="Жанр" required>
+        <input type="text" name="description" placeholder="Описание" required>
+        <input type="text" name="publish" placeholder="Издательство" required>
+        <input type="number" name="year" placeholder="Год публикации" required>
+        <input type="number" name="pages" placeholder="Количество страниц" required>
+        <button type="submit">Добавить книгу</button>
+    </form>
+    <a href="/">Вернуться на главную страницу</a>
+</body>
+</html>
